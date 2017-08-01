@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --compilers ts:ts-node/register,tsx:ts-node/register --require ./test/test_helper.ts \"test/**/*.?(ts|tsx)\"",
-    "test:watch": "npm run test -- --watch --watch-extensions tsx"
+    "test:watch": "npm run test -- --watch --watch-extensions tsx",
+    "start": "webpack-dev-server"
   },
   "keywords": [],
   "author": "",

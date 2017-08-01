@@ -8,7 +8,6 @@
             "type": "node",
             "request": "launch",
             "name": "Mocha Tests",
-            //"mocha \"test/**/*.?(ts|tsx)\""
             "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
             "args": [
                 "-u",
@@ -23,15 +22,6 @@
                 "${workspaceRoot}/test"
             ],
             "internalConsoleOptions": "openOnSessionStart"
-        },
-        {
-            "type": "node",
-            "request": "launch",
-            "name": "Launch Program",
-            "program": "${file}",
-            "outFiles": [
-                "${workspaceRoot}/out/**/*.js"
-            ]
         }
     ]
 }
