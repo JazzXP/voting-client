@@ -7,7 +7,7 @@ import {Map, List} from 'immutable';
 
 import * as actionCreators from '../action_creators';
 
-export interface ResultsProps /*extends WinnerProps*/ {
+export interface ResultsProps {
     pair: List<string>;
     tally: Map<string, number>;
     winner?: string;
@@ -20,9 +20,9 @@ export interface ResultsConnectedDispatch {
     nextAction?: React.EventHandler<React.MouseEvent<HTMLButtonElement>>;
 }
 
-const defaultArr:Array<string> = [];
+const defaultArr:List<string> = List([]);
 export class Results extends React.PureComponent<ResultsProps & ResultsConnectedDispatch, ResultsState> {
-    getPair() {
+    getPair(): List<string> {
         return this.props.pair || defaultArr;
     }
 
@@ -38,7 +38,7 @@ export class Results extends React.PureComponent<ResultsProps & ResultsConnected
         <Winner ref="winner" winner={this.props.winner} />:
         <div className="results">
             <div className="tally">
-            {this.getPair().map(entry => 
+            {this.getPair().map((entry: any) => 
                 <div key={entry} className="entry">
                     <h1>{entry}</h1>
                     <div className="voteCount">

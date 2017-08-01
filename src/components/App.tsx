@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 export interface AppProps {
-    children: any;
+    children?: any;
 }
 
 export interface AppState {}
