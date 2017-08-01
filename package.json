@@ -1,0 +1,45 @@
+{
+  "name": "voting-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --compilers ts:ts-node/register,tsx:ts-node/register --require ./test/test_helper.ts \"test/**/*.?(ts|tsx)\"",
+    "test:watch": "npm run test -- --watch --watch-extensions tsx"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.0.1",
+    "@types/jsdom": "^11.0.1",
+    "@types/mocha": "^2.2.41",
+    "@types/react": "^15.6.0",
+    "@types/react-dom": "^15.5.1",
+    "@types/react-redux": "^4.4.47",
+    "@types/react-router-dom": "^4.0.7",
+    "@types/socket.io-client": "^1.4.29",
+    "awesome-typescript-loader": "^3.2.2",
+    "chai": "^4.1.0",
+    "chai-immutable": "^1.6.0",
+    "jsdom": "^11.1.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^3.4.2",
+    "react-hot-loader": "^1.3.1",
+    "source-map-loader": "^0.2.1",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.4.2",
+    "webpack": "^3.4.1",
+    "webpack-dev-server": "^2.6.1"
+  },
+  "dependencies": {
+    "immutable": "^3.8.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "react-router": "^4.1.2",
+    "react-router-dom": "^4.1.2",
+    "redux": "^3.7.2",
+    "socket.io-client": "^2.0.3"
+  }
+}
