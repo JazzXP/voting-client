@@ -4,7 +4,7 @@ import Winner from './Winner';
 import {WinnerProps, WinnerState} from './Winner';
 import Vote from './Vote';
 import {VoteProps, VoteConnectedDispatch} from './Vote';
-import * as actionCreators from '../action_creators';
+import { actionCreators } from '../action_creators';
 
 export interface VotingProps extends VoteProps {
     children?: any;

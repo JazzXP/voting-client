@@ -1,9 +1,10 @@
 import * as CONSTANTS from './constants';
 import {Map} from 'immutable'
+import {VotingClientState} from './action_creators';
 
 export type SetStateAction = {
     type?: CONSTANTS.SET_STATE,
-    state: Map<any, any>
+    state: VotingClientState
 }
 
 export type VoteAction = {

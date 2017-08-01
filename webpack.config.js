@@ -25,13 +25,14 @@ module.exports = {
     },
     output: {
         path: __dirname + '/dist',
-        publicPath: '/',
+        publicPath: '',
         filename: 'bundle.js'
     },
     devServer: {
         contentBase: './dist',
         hot: true
     },
+    devtool: "#inline-source-map",
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({template: 'src/index.html'})
