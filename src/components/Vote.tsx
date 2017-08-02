@@ -28,12 +28,12 @@ export default class Vote extends React.PureComponent<VoteProps & VoteConnectedD
 
     render() {
         return <div className="voting">
-            {this.getPair().map(entry => 
-                <button key={entry!} // Not NULL/Undefined
+            {this.getPair().map((entry: string) => 
+                <button key={entry} // Not NULL/Undefined
                     disabled={this.isDisabled()}
-                    onClick={()=>this.props.voteAction ? this.props.voteAction(entry!) : null}>
+                    onClick={()=>this.props.voteAction ? this.props.voteAction(entry) : null}>
                     <h1>{entry}</h1>
-                    {this.hasVotedFor(entry!)?
+                    {this.hasVotedFor(entry)?
                         <div className="label">Voted</div>:
                         null}
                 </button>

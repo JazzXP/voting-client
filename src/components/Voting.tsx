@@ -5,7 +5,7 @@ import Winner from './Winner';
 import {WinnerProps, WinnerState} from './Winner';
 import Vote from './Vote';
 import {VoteProps, VoteConnectedDispatch} from './Vote';
-import { actionCreators, VOTING_CLIENT_ACTION } from '../action_creators';
+import { actionCreators, VOTING_CLIENT_ACTION, VotingClientState } from '../action_creators';
 
 export interface VotingProps extends VoteProps {
     children?: any;
@@ -24,7 +24,7 @@ export class Voting extends React.PureComponent <VotingProps & VoteConnectedDisp
     }
 }
 
-function mapStateToProps(state: any, ownProps: VotingProps) {
+function mapStateToProps(state: VotingClientState, ownProps: VotingProps) {
     return {
         pair: state.getIn(['vote', 'pair']),
         hasVoted: state.get('hasVoted'),

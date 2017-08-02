@@ -5,7 +5,7 @@ import Winner from './Winner';
 import {WinnerProps, WinnerState} from './Winner';
 import {Map, List} from 'immutable';
 
-import { actionCreators, VOTING_CLIENT_ACTION } from '../action_creators';
+import { actionCreators, VOTING_CLIENT_ACTION, VotingClientState } from '../action_creators';
 
 export interface ResultsProps {
     pair: List<string>;
@@ -38,7 +38,7 @@ export class Results extends React.PureComponent<ResultsProps & ResultsConnected
         <Winner ref="winner" winner={this.props.winner} />:
         <div className="results">
             <div className="tally">
-            {this.getPair().map((entry: any) => 
+            {this.getPair().map((entry: string) => 
                 <div key={entry} className="entry">
                     <h1>{entry}</h1>
                     <div className="voteCount">
@@ -58,7 +58,7 @@ export class Results extends React.PureComponent<ResultsProps & ResultsConnected
     }
 }
 
-function mapStateToProps(state: any, ownProps: ResultsProps) {
+function mapStateToProps(state: VotingClientState, ownProps: ResultsProps) {
     return {
         pair: state.getIn(['vote', 'pair']),
         tally: state.getIn(['vote', 'tally']),
