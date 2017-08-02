@@ -6,14 +6,6 @@ import * as actionTypes from '../src/action_types';
 import {SET_STATE, VOTE} from '../src/constants';
 import {VotingClientState} from '../src/action_creators';
 
-function cleanJSON(inputJSON: VotingClientState): object {
-    if (!inputJSON.toJS)
-        return inputJSON;
-    return JSON.parse(
-        JSON.stringify(inputJSON.toJS())
-    ); // Removes all 'undefined' parameters
-}
-
 describe('reducer', () => {
     it('handles SET_STATE', () => {
         const initialState = new VotingClientState();
@@ -26,9 +18,9 @@ describe('reducer', () => {
                 })
             })
         };
-        const nextState = cleanJSON(reducer(initialState, action));
+        const nextState = reducer(initialState, action);
 
-        expect(nextState).to.deep.equal({
+        expect(nextState.toJS()).to.deep.equal({
             vote: {
                 pair: ['Trainspotting', '28 Days Later'],
                 tally: { 'Trainspotting': 1 }
@@ -47,9 +39,9 @@ describe('reducer', () => {
                 }
             }
         };
-        const nextState = cleanJSON(reducer(initialState, action));
+        const nextState = reducer(initialState, action);
 
-        expect(nextState).to.deep.equal({
+        expect(nextState.toJS()).to.deep.equal({
             vote: {
                 pair: ['Trainspotting', '28 Days Later'],
                 tally: { 'Trainspotting': 1 }
@@ -67,9 +59,9 @@ describe('reducer', () => {
                 }
             }
         };
-        const nextState = cleanJSON(reducer(undefined, action));
+        const nextState = reducer(undefined, action);
 
-        expect(nextState).to.deep.equal({
+        expect(nextState.toJS()).to.deep.equal({
             vote: {
                 pair: ['Trainspotting', '28 Days Later'],
                 tally: { 'Trainspotting': 1 }
@@ -88,9 +80,9 @@ describe('reducer', () => {
             type: VOTE, 
             entry: 'Trainspotting'
         };
-        const nextState = cleanJSON(reducer(state, action).toJS());
+        const nextState = reducer(state, action);
 
-        expect(nextState).to.deep.equal({
+        expect(nextState.toJS()).to.deep.equal({
             vote: {
                 pair: ['Trainspotting', '28 Days Later'],
                 tally: { 'Trainspotting': 1 }
@@ -107,8 +99,8 @@ describe('reducer', () => {
             }
         };
         const action = {type: VOTE, entry: 'Sunshine'};
-        const nextState = cleanJSON(reducer(state, action));
-        expect(nextState).to.deep.equal({
+        const nextState = reducer(state, action);
+        expect(nextState.toJS()).to.deep.equal({
             vote: {
                 pair: ['Trainspotting', '28 Days Later'],
                 tally: { 'Trainspotting': 1 }
@@ -132,9 +124,9 @@ describe('reducer', () => {
                 }
             }
         };
-        const nextState = cleanJSON(reducer(initialState, action));
+        const nextState = reducer(initialState, action);
 
-        expect(nextState).to.deep.equal({
+        expect(nextState.toJS()).to.deep.equal({
             vote: {
                 pair: ['Sunshine', 'Slumdog Millionare']
             }

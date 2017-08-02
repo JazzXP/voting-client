@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
+import {Dispatch} from 'redux';
 import Winner from './Winner';
 import {WinnerProps, WinnerState} from './Winner';
 import Vote from './Vote';
 import {VoteProps, VoteConnectedDispatch} from './Vote';
-import { actionCreators } from '../action_creators';
+import { actionCreators, VOTING_CLIENT_ACTION } from '../action_creators';
 
 export interface VotingProps extends VoteProps {
     children?: any;
@@ -31,9 +32,9 @@ function mapStateToProps(state: any, ownProps: VotingProps) {
     };
 }
 
-function mapDispatchToProps(): VoteConnectedDispatch {
+function mapDispatchToProps(dispatch: Dispatch<VOTING_CLIENT_ACTION>): VoteConnectedDispatch {
     return {
-        voteAction: actionCreators.voteAction
+        voteAction: (entry: string) => dispatch(actionCreators.voteAction(entry))
     };
 } 
 

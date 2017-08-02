@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as Redux from 'redux';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import Winner from './Winner';
 import {WinnerProps, WinnerState} from './Winner';
 import {Map, List} from 'immutable';
 
-import * as actionCreators from '../action_creators';
+import { actionCreators, VOTING_CLIENT_ACTION } from '../action_creators';
 
 export interface ResultsProps {
     pair: List<string>;
@@ -66,9 +66,9 @@ function mapStateToProps(state: any, ownProps: ResultsProps) {
     }
 }
 
-function mapDispatchToProps(): ResultsConnectedDispatch {
+function mapDispatchToProps(dispatch: Redux.Dispatch<VOTING_CLIENT_ACTION>): ResultsConnectedDispatch {
     return {
-        nextAction: actionCreators.nextAction
+        nextAction: () => dispatch(actionCreators.nextAction())
     };
 } 
 

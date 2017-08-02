@@ -21,9 +21,19 @@ type _VOTING_CLIENT_ACTION = {
 
 export type VOTING_CLIENT_ACTION = _VOTING_CLIENT_ACTION & VOTING_CLIENT_STATE;
 
-export class VotingClientState extends Record(
-    {
-    } as VOTING_CLIENT_STATE) {}
+export class VotingClientState extends Record({
+    meta: undefined, 
+    entry: undefined,
+    state: undefined,
+    entries: undefined,
+    vote: undefined,
+    hasVoted: undefined
+    } as VOTING_CLIENT_STATE) {
+        public toJS(): any {
+            // Clear out undefined values
+            return JSON.parse(JSON.stringify(super.toJS()));
+        }
+    }
 
 export function setStateAction(state: VotingClientState): VOTING_CLIENT_ACTION {
     return {
